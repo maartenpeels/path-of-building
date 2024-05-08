@@ -70,6 +70,7 @@ export interface ExtraImage {
 }
 
 export interface Group {
+    id:          string;
     x:           number;
     y:           number;
     orbits:      number[];

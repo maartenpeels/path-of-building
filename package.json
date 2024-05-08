@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pixi/events": "^7.4.2",
     "@pixi/graphics": "7.4.2",
     "@pixi/react": "7.1.2",
     "pixi-viewport": "5.0.3",

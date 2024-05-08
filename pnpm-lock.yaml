@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@pixi/events':
+    specifier: ^7.4.2
+    version: 7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2)
   '@pixi/graphics':
     specifier: 7.4.2
     version: 7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2)(@pixi/sprite@7.4.2)
