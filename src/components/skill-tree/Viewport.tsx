@@ -25,20 +25,32 @@ const PixiComponentViewport = PixiComponent("Viewport", {
     const { ticker } = props.app;
     const { events } = props.app.renderer;
 
+    const worldWidth = props.bounds.maxX - props.bounds.minX;
+    const worldHeight = props.bounds.maxY - props.bounds.minY;
+
     const viewport = new PixiViewport({
       screenWidth: width,
       screenHeight: height,
-      worldWidth: props.bounds.maxX - props.bounds.minX,
-      worldHeight: props.bounds.maxY - props.bounds.minY,
+      worldWidth: worldWidth,
+      worldHeight: worldHeight,
       ticker: ticker,
       events: events,
     });
 
+    // TODO: Zooming becomes slower when zooming in more
     viewport
       .drag()
       .pinch()
-      .wheel()
-      .decelerate();
+      .wheel({ smooth: 3 })
+      .decelerate()
+      .clampZoom({
+        minWidth: 500,
+        minHeight: 500,
+        maxWidth: worldWidth + 500, // TODO: + 500 does not seem to work
+        maxHeight: worldHeight + 500, // TODO: + 500 does not seem to work
+      });
+
+    viewport.moveCenter(0, 0);
 
     return viewport;
   },
